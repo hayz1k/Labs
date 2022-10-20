@@ -1,0 +1,162 @@
+7.1
+void main() {
+	setlocale(LC_ALL, "RUS");
+	char c;
+	puts("Введите символы 'a' или 'b' или цифру");
+	scanf("%c", &c);
+	switch (c) {
+	case '1':
+		printf("Это цифра\n");
+		break;
+	case '2':
+		printf("Это цифра\n");
+		break;
+	case '3':
+		printf("Это цифра\n");
+		break;
+	case '4':
+		printf("Это цифра\n");
+		break;
+	case '5':
+		printf("Это цифра\n");
+		break;
+	case '6':
+		printf("Это цифра\n");
+		break;
+	case '7':
+		printf("Это цифра\n");
+		break;
+	case '8':
+		printf("Это цифра\n");
+		break;
+	case '9':
+		printf("Это цифра\n");
+		break;
+	case '0':
+		printf("Это цифра\n");
+		break;
+	case 'a':
+		printf("Это буква\n");
+		break;
+	case 'b':
+		printf("Это буква\n");
+		break;
+	default:
+		printf("Неизвестный символ\n");
+	}
+}
+
+7.2
+void main()
+{
+	float x, y;
+	char z;
+	setlocale(LC_ALL, "rus");
+	printf("Введите пример вводя каждый символ отдельно: \n");
+	printf("Введите пример: \n");
+	scanf("%f%c%f",&x,&z,&y);
+	switch (z)
+	{
+	case '+':
+		printf("%f + %f = %f", x, y, x+y);
+		break;
+	case '-':
+		printf("%f - %f = %f", x, y, x-y);
+		break;
+	case '*':
+		printf("%f * %f = %f", x, y, x*y);
+		break;
+	case '/':
+		printf("%f / %f = %.2f",x , y, x/y);
+		break;
+	default: printf("Команда не распознана");
+		break;
+	}
+}
+
+7.3
+void main() {
+	int months, years;
+	setlocale(LC_ALL, "RUS");
+	puts("Введите возраст ребенка в месяцах");
+	scanf("%d", &months);
+	years = months / 12;
+	if (years < 1) {
+		switch (months) {
+		case '1':
+			printf("Ребенок новорожденный\n");
+			break;
+		case '2':
+			printf("Ребенок новорожденный\n");
+			break;
+		default:
+			printf("Ребенок младенец\n");
+		}
+	}
+	else if (years >= 1 && years < 3) {
+		printf("Ребенок пребывает в раннем детстве\n");
+	}
+	else if (years >= 3 && years < 7) {
+		printf("Ребенок - дошкольник\n");
+	}
+	else if (years >= 7 && years < 13) {
+		printf("Ребенок - школьник\n");
+	}
+	else if (years >= 13 && years < 17) {
+		printf("Ребенок подросток\n");
+	}
+	else {
+		printf("Это не ребенок\n");
+	}
+}
+
+8.1
+void main() {
+	setlocale(LC_ALL, "RUS");
+	int n, m, s = 0, count = 0;
+	puts("Введите n");
+	scanf("%d", &n);
+	puts("Введите m");
+	scanf("%d", &m);
+
+	for (m; m >= n; m--) {
+		s += m;
+		count += 1;
+		printf("Выполнено %d раз, число %d\n", count, m);
+	}
+	printf("Результат %d", s);
+}
+
+8.2
+void main() {
+	setlocale(LC_ALL, "RUS");
+	double step, x;
+	puts("Функция y = 1.8x*x - sin(10x)");
+	puts("Введите шаг табуляции");
+	scanf("%lf", &step);
+	puts("|    x\t    |\tf(x)   |");
+	for (x = 0.2; x <= 2.2; x += step) {
+		printf("| %lf. | %+lf|\n", x, func(x));
+	}
+}
+
+8.3
+double func(int m) {
+	int n = 0;
+	double res = 0, y = 0;
+	for (; n < m; n++) {
+		y = pow((-1), n) * (1. / pow(2, n));
+		res += y;
+	}
+	return res;
+}
+
+void main() {
+	setlocale(LC_ALL, "RUS");
+	int m;
+	puts("Введите m");
+	scanf("%d", &m);
+	printf("Сумма ряда = %lf", func(m));
+}
+
+
