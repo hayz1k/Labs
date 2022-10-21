@@ -1,0 +1,38 @@
+8.2 
+#define euler 2.718281828459045235360287471352
+
+void main() {
+	setlocale(LC_ALL, "RUS");
+	double step, x, w;
+	puts("Функция y = 1.8x*x - sin(10x)");
+	puts("Введите шаг табуляции");
+	scanf("%lf", &step);
+	puts("Введите w");
+	scanf("%lf", &w);
+	puts("|    x\t    |\tf(x)   |");
+	for (x = 1.0; x <= 3.0; x += step) {
+		printf("| %lf. | %+lf|\n", x, abs(pow(euler, w) - 2) - x*x);
+	}
+}
+
+8.3
+int factorial(int x) {
+	int res = 1;
+	for (int i = 1; i <= x; i++)
+		res *= i;
+	return res;
+}
+
+
+void main() {
+	setlocale(LC_ALL, "RUS");
+	double x, res;
+	int step = 0;
+	puts("Введите x (double)");
+	scanf("%lf", &x);
+	for (int i = 1; i < 13; i += 2) {
+		res += pow((-1), step) * (pow(x, i) / (double)factorial(i));
+		step++;
+	}
+	printf("Результат = %lf", res);
+}
