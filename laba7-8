@@ -136,7 +136,7 @@ void main() {
 	scanf("%lf", &step);
 	puts("|    x\t    |\tf(x)   |");
 	for (x = 0.2; x <= 2.2; x += step) {
-		printf("| %lf. | %+lf|\n", x, func(x));
+		printf("| %lf. | %+lf|\n", x, 1.8*x*x - sin(10x);
 	}
 }
 
