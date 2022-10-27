@@ -1,0 +1,77 @@
+struct point {
+	float x;
+	float y;
+	char name; 
+};
+
+typedef struct point Point;
+
+int put_point(Point z);
+float dist(Point z, Point w);
+Point seredina(Point z, Point w);
+int part(Point z);
+
+void main() {
+	setlocale(LC_ALL, "RUS");
+	Point a, b; int end = 1;
+	a.name = 'A'; a.x = 5; a.y = -3;
+	puts("Введите название второй точки, координату x, координату y");
+	scanf("%c%f%f", &b.name, &b.x, &b.y);
+	
+	while (end != 6) {
+		puts("\nВыберите команду:\n1) Расстояние между точками\n2) Координата середины отрезка между точками\n3) В какой четверти находится вторая точка\n4) В какой четверти находится середина\n5) Изменить координаты точки A\n6) Окончить работу с программой");
+		scanf("%d", &end);
+		switch (end) {
+		case 1: 
+			printf("Расстояние между точками равно %.1f\n", dist(a, b));
+			break;
+		case 2:
+			put_point(seredina(a, b));
+			break;
+		case 3:
+			printf("Вторая точка находится в %d четверти\n", part(b));
+			break;
+		case 4:
+			printf("Середина находится в %d четверти\n", put_point(seredina(a, b)));
+			break;
+		case 5:
+			puts("Введите новые координаты точки A");
+			scanf("%f%f", &a.x, &a.y);
+			printf("Новые координаты точки A\n");
+			put_point(a);
+		case 6:
+			break;
+		}
+	}
+}
+
+int put_point(Point z) {
+	printf("point %c (%.1f, %.1f)\n", z.name, z.x, z.y);
+	return 0;
+}
+
+float dist(Point z, Point w) {
+	return sqrt(pow(z.x - w.x, 2) + pow(z.y - w.y, 2));
+}
+
+Point seredina(Point z, Point w) {
+	Point superpoint; 
+	superpoint.x = (z.x + w.x) / 2;
+	superpoint.y = (z.y + w.y) / 2;
+	return superpoint;
+}
+
+int part(Point z) {
+	if ((z.x > 0 && z.y > 0)) {
+		return 1;
+	}
+	else if ((z.x < 0 && z.y > 0)) {
+		return 2;
+	}
+	else if ((z.x < 0 && z.y < 0)) {
+		return 3;
+	}
+	else if ((z.x > 0 && z.y < 0)) {
+		return 4;
+	}
+}
