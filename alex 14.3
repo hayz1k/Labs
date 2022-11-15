@@ -1,0 +1,102 @@
+int index_sum(int i, int size) {
+	int sum = 0;
+	i++;
+	for (i; i < size; i++) {
+		sum += i;
+	}
+	return sum;
+}
+
+double* calc_elements(double* ptr_array, int size) {
+	double mi = 0, mx = 0;
+	for (int i = 0; i < size; i++) {
+		if (ptr_array[i] >= mx) {
+			mx = ptr_array[i];
+			mi = i;
+		}
+	}
+	printf("Наибольшее число %lf\n", mx);
+	if (mi == (size - 1)) {
+		printf("Последнее число наибольшее\n");
+	}
+	else {
+		printf("Сумма индексов после наибольшего числа равна %d\n", index_sum(mi, size));
+	}
+}
+
+double function(double x) {
+	return 1.8 * x * x - sin(10 * x);
+}
+
+double* full_elements(double* ptr_array, int size) {
+	double x = 0, mx = 0, mi = 0;
+
+	for (int i = 0; i < size; i++) {
+		printf("Введите a[%d] = ", i);
+		scanf("%lf.", &x);
+		ptr_array[i] = x;
+	}
+	return ptr_array;
+}
+
+int put_elements(double* ptr_array, int size) {
+	for (int i = 0; i < size; i++) {
+		printf("a[%d] = %f\n", i, ptr_array[i]);
+	}
+}
+
+double sum_elements(double* ptr_array, int begin, int end) {
+	double sum = 0;
+	for (begin; begin < end; begin++) {
+		sum += ptr_array[begin];
+	}
+	printf("Сумма элементов равна %lf.", sum);
+}
+	
+int find_element(double* ptr_array, int size, double element) {
+	for (int i = 0; i < size; i++) {
+		if (ptr_array[i] == element) {
+			return i;
+		}
+	}
+	return -1;
+}
+
+double last_positive_element(double* ptr_array, int size) {
+	double lp = 0;
+	for (int i = 0; i < size; i++) {
+		if (ptr_array[i] > 0) {
+			lp = ptr_array[i];
+		}
+	}
+	return lp;
+}
+
+void main() {
+	setlocale(LC_ALL, "RUS");
+	double array[N];
+	double a;
+	int size, el;
+	printf("Введите размер массива > ");
+	scanf("%d", &size);
+
+	full_elements(array, size);
+	put_elements(array, size);
+
+	calc_elements(array, size);
+	put_elements(array, size);
+
+	sum_elements(array, 0, size);
+
+	puts("\nО_о какой элемент массива хотите найти? о_О");
+	scanf("%lf", &a);
+
+	el = find_element(array, size, a);
+	if (el != -1) {
+		printf("Элемент найден. Возвращаемое значение = %d\n", el);
+	}
+	else {
+		printf("Элемент не найден. Возвращаемое значение = %d\n", el);
+	}
+	printf("Последний положительный элемент = %lf", last_positive_element(array, size));
+}
