@@ -1,0 +1,140 @@
+#define N 10
+
+
+11.1
+void main()
+{
+	float temp, s = 0;
+	float A[N];
+	float Z[N];
+	setlocale(LC_ALL, "rus");
+	for (int i = 0; i < N; i++) {
+		printf("a[%d] = ", i + 1);
+		scanf("%f", &temp);
+		A[i] = temp;
+	}
+	for (int i = 0; i < N; i++) {
+		if (i != 0 && i != 9) {
+			Z[i] = (A[i - 1] + A[i] + A[i + 1]) / 3.;
+			s += A[i];
+		}
+		else if (i == 0) {
+			Z[i] = (A[i] + A[i + 1]) / 2.;
+			s += A[i];
+		}
+		else {
+			Z[i] = (A[i] + A[i - 1]) / 2.;
+			s += A[i];
+		}
+	}
+
+	printf("\n| индекс | исходное значение | новое значение |\n");
+	for (int i = 0; i < 10; i++) {
+		printf("| %d \t | %.2f \t     | %.2f \t      |\n", i, A[i], Z[i]);
+	}
+	printf("\nСреднее арифметическое элементов массива: %.2f", s / N);
+}
+
+
+
+11.2
+float function(float x) {
+	return 1.8 * x * x - sin(10 * x);
+}
+
+void main() {
+	setlocale(LC_ALL, "RUS");
+	float d[100];
+	float j = 0.2, sum1 = 0, sum2 = 0;
+	int count1 = 0, count2 = 0;
+	for (int i = 0; (j < 2.2 && i < 100); j += 0.01, i++) {
+		d[i] = function(j);
+		if (d[i] > 0) {
+			sum1 += d[i];
+			count1++;
+		}
+		else {
+			sum2 += d[i];
+			count2++;
+		}
+	}
+	printf("Имя массива = 'd' , накопленное положительное значение = %f , накопленное отрицательное значение = %f , число положительных = %.0f , число отрицательных = %.0f , вычисленное среднее = %.2f ", sum1, sum2, count1, count2, (sum1 + sum2) / (count1 + count2));
+}
+
+void main() {
+	setlocale(LC_ALL, "RUS");
+	char Snew[20] = "Привет, ";
+	char Name[10];
+	printf("Введите имя\n");
+	scanf("%s", Name);
+	strcat(Snew, Name);
+	printf("%s!", Snew);
+}
+
+void main() {
+	setlocale(LC_ALL, "RUS");
+	int array[7][6];
+	int x;
+	char name[10][10];
+	for (int i = 0; i < 7; i++) {
+		for (int j = 0; j < 6; j++) {
+			printf("array[%d][%d] = ", i, j);
+			scanf("%d", &x);
+			array[i][j] = x;
+			if (j == 0) {
+				printf("Введите имя участника #%d\n", i + 1);
+				scanf("%s", &name[i]);;
+			}
+		}
+	}
+
+	for (int i = 0; i < 7; i++) {
+		for (int j = 0; j < 6; j++) {
+			printf("%d ", array[i][j]);
+			if (j == 5) {
+				printf("\n");
+			}
+			if (j == 0) {
+				printf("%s ", name[i]);
+			}
+		}
+	}
+}
+
+11.3
+int index_sum(int i) {
+	int sum = 0;
+	i++;
+	for (i; i < N; i++) {
+		sum += i;
+	}
+	return sum;
+}
+
+void main() {
+	setlocale(LC_ALL, "RUS");
+	float a[N];
+	float mx = 0;
+	int i, mi = 0;
+	setlocale(LC_ALL, "rus");
+
+	for (i = 0; i < N; i++) {
+		printf("a[%d] = ", i);
+		scanf("%f", &a[i]);
+	}
+
+	for (i = 0; i < N; i++) {
+		if (a[i] > mx) {
+			mx = a[i];
+			mi = i;
+		}
+	}
+
+	printf("Наибольшее число %f\n", mx);
+	if (mi == (N - 1)) {
+		printf("Последнее число наибольшее\n");
+	}
+	else {
+		printf("Сумма индексов равна %d", index_sum(mi));
+	}
+}
