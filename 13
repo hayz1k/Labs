@@ -1,0 +1,19 @@
+void main() {
+	system("chcp 1251");
+	setlocale(LC_CTYPE, "RU");
+	char Snew[50] = { "Добрый вечер," };
+	char Name[10];
+	puts("Введите имя");
+	scanf("%s", Name);
+	strcat(Snew, Name);
+	for (int i = 0; i <= strlen(Snew); i++) {
+		Snew[i] = toupper(Snew[i]);
+	}
+	for (int i = strlen(Snew); i <= 40; i++) {
+		Snew[i] = '!';
+	}
+	for (int i = 0; i <= (strlen(Snew) / 2); i++) {
+		Snew[i] = tolower(Snew[i]);
+	}
+	printf("%s", Snew);
+}
